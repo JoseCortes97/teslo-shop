@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import 'tailwindcss';
+@plugin "daisyui";
+
+@font-face {
+  font-family: 'Raleway';
+  src: url('/assets/fonts/Raleway/Raleway-Medium.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@theme {
+  --default-font-family: 'Raleway', sans-serif;
+
+  --animate-fadeIn: fadeIn 0.3s ease-in-out;
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}

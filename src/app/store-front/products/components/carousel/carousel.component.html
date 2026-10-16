@@ -1,0 +1,17 @@
+<swiper-container
+  slides-per-view="1"
+  [spaceBetween]="spaceBetween"
+  loop="true"
+  navigation="true"
+  pagination="true"
+  autoplay-delay="2000"
+  autoplay-disable-on-interaction="false"
+>
+  @for (image of images(); track $index) {
+    <swiper-slide>
+      <img [src]="image | productImage" alt="Producto" class="animate-fadeIn" />
+    </swiper-slide>
+  } @empty {
+    <img [src]="'' | productImage" alt="Producto" />
+  }
+</swiper-container>
