@@ -6,7 +6,7 @@
     "paths": {
       "@auth/*": ["./src/app/auth/*"],
       "@dashboard/*": ["./src/app/admin-dashboard/*"],
-      "@products/*": ["src/app/products/*"],
+      "@products/*": ["./src/app/products/*"],
       "@store-front": ["./src/app/store-front/*"],
       "@assets/*": ["./src/assets/*"],
       "@environments/*": ["./src/environments/*"]
