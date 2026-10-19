@@ -1,5 +1,5 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, input } from '@angular/core';
-import { ProductImagePipe } from '@products/pipes/product-image.pipe';
+import { ProductImagePipe } from '../../pipes/product-image.pipe';
 import { Swiper } from 'swiper/types';
 
 @Component({

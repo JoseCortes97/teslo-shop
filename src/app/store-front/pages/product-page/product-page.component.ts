@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { rxResource, toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
-import { ProductsService } from '@products/services/products.service';
-import { Carouselomponent } from '@products/components/carousel/carousel.component';
+import { ProductsService } from '../../../products/services/products.service';
+import { Carouselomponent } from '../../../products/components/carousel/carousel.component';
 
 @Component({
   selector: 'app-product-page',

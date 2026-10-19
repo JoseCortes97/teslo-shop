@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
-import { CardComponent } from '../../products/components/card/card.component';
-import { ProductsService } from '@products/services/products.service';
+import { CardComponent } from '../../../products/components/card/card.component';
+import { ProductsService } from '../../../products/services/products.service';
 import { rxResource, toSignal } from '@angular/core/rxjs-interop';
 import { PaginationComponent } from '../../../shared/components/pagination/pagination.component';
 import { ActivatedRoute } from '@angular/router';
@@ -9,7 +9,6 @@ import { PaginationService } from '../../../shared/components/pagination/paginat
 
 @Component({
   selector: 'app-home-page',
-
   imports: [CardComponent, PaginationComponent],
   templateUrl: './home-page.component.html',
 })
