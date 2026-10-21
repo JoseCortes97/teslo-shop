@@ -39,12 +39,4 @@ import { Swiper } from 'swiper/types';
 export class Carouselomponent {
   spaceBetween = 10;
   images = input.required<string[]>();
-  onProgress(event: CustomEvent<[Swiper, number]>) {
-    const [swiper, progress] = event.detail;
-    console.log(progress);
-  }
-
-  onSlideChange() {
-    console.log('slide changed');
-  }
 }
