@@ -71,6 +71,7 @@
     <!-- Botones para el género -->
     <div class="grid grid-cols-3 gap-2">
       <button
+        type="button"
         (click)="productForm.patchValue({ gender: 'men' })"
         [class.btn-primary]="productForm.value.gender === 'men'"
         class="btn btn-sm"
@@ -78,6 +79,7 @@
         Masculino
       </button>
       <button
+        type="button"
         (click)="productForm.patchValue({ gender: 'women' })"
         [class.btn-secondary]="productForm.value.gender === 'women'"
         class="btn btn-sm"
@@ -85,6 +87,7 @@
         Femenino
       </button>
       <button
+        type="button"
         (click)="productForm.patchValue({ gender: 'kid' })"
         [class.btn-info]="productForm.value.gender === 'kid'"
         class="btn btn-sm"
@@ -92,6 +95,7 @@
         Kid
       </button>
       <button
+        type="button"
         (click)="productForm.patchValue({ gender: 'unisex' })"
         [class.btn-accent]="productForm.value.gender === 'unisex'"
         class="btn btn-sm"
@@ -133,6 +137,24 @@
 
     <product-carousel [images]="product().images" />
 
-    <input type="file" class="file-input file-input-bordered w-full mt-4" />
+    <input
+      type="file"
+      multiple
+      accept="image/*"
+      class="file-input file-input-bordered w-full mt-4"
+      (change)="onFilesChanged($event)"
+    />
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-2">
+      @for (item of tempImages(); track $index) {
+        <img [src]="item" class="w-full h-24 object-cover rounded-lg" />
+      }
+    </div>
   </div>
 </form>
+@if (wasSaved()) {
+  <div class="alert alert-success mt-4 fixed bottom-4 right-4 w-80 animate-fadeIn">
+    <div>
+      <span>Producto guardado correctamente</span>
+    </div>
+  </div>
+}

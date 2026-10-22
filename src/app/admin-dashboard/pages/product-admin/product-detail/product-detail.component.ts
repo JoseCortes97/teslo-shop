@@ -21,6 +21,8 @@ export class ProductDetailComponent implements OnInit {
   fb = inject(FormBuilder);
   wasSaved = signal(false);
   productService = inject(ProductsService);
+  imageFileList: FileList | undefined = undefined;
+  tempImages = signal<string[]>([]);
 
   productForm = this.fb.group({
     title: ['', Validators.required],
@@ -60,12 +62,16 @@ export class ProductDetailComponent implements OnInit {
           .split(',')
           .map((tag) => tag.trim()) ?? [],
     };
-    console.log(this.product());
+
     if (this.product().id === 'new') {
-      const productNew = await firstValueFrom(this.productService.createProduct(productLike));
+      const productNew = await firstValueFrom(
+        this.productService.createProduct(productLike, this.imageFileList),
+      );
       this.router.navigate(['/admin/products', productNew.id]);
     } else {
-      await firstValueFrom(this.productService.updateProduct(this.product().id, productLike));
+      await firstValueFrom(
+        this.productService.updateProduct(this.product().id, productLike, this.imageFileList),
+      );
     }
 
     this.wasSaved.set(true);
@@ -83,5 +89,13 @@ export class ProductDetailComponent implements OnInit {
       currentSizes.push(size);
     }
     this.productForm.patchValue({ sizes: currentSizes });
+  }
+
+  onFilesChanged(event: Event) {
+    const target = (event.target as HTMLInputElement).files;
+
+    this.imageFileList = target ?? undefined;
+    const imageUrls = Array.from(target ?? []).map((file) => URL.createObjectURL(file));
+    this.tempImages.set(imageUrls);
   }
 }
